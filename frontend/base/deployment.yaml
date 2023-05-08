@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: legal-insight-frontend
-          image: europe-west6-docker.pkg.dev/legal-insight-frontend/legal-insight-frontend:latest
+          image: europe-west6-docker.pkg.dev/legal-insight/legal-insight-frontend/legal-insight-frontend:latest
           ports:
             - name: http
-              containerPort: 5000
+              containerPort: 3000

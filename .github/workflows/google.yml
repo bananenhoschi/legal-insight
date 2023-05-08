@@ -41,6 +41,7 @@ jobs:
     - name: Docker configuration
       run: |-
         echo ${{steps.auth.outputs.access_token}} | docker login -u oauth2accesstoken --password-stdin https://$GAR_LOCATION-docker.pkg.dev
+    
     # Get the GKE credentials so we can deploy to the cluster
     - name: Set up GKE credentials
       uses: google-github-actions/get-gke-credentials@v1.0.2
@@ -56,6 +57,7 @@ jobs:
         location: ${{ env.GKE_ZONE }}
         project_id: ${{ env.PROJECT_ID }}
         credentials: ${{ secrets.GKE_SA_KEY }}
+    
     # Build the Docker image
     - name: Build Frontend
       run: |-
@@ -63,14 +65,14 @@ jobs:
           --tag "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$FRONTEND_REPOSITORY/legal-insight-frontend:GITHUB_SHA" \
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
           --build-arg GITHUB_REF="$GITHUB_REF" \
-          ./frontend/Dockerfile
+          ./frontend
     - name: Build Backend
       run: |-
         docker build \
           --tag "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$BACKEND_REPOSITORY/legal-insight-backend:GITHUB_SHA" \
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
           --build-arg GITHUB_REF="$GITHUB_REF" \
-          ./backend/Dockerfile
+          ./backend
     # Push the Docker image to Google Artifact Registry
     - name: Publish
       run: |-

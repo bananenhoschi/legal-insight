@@ -55,7 +55,7 @@ patches:
         template:
           metadata:
             labels:
-              app: legal-legal-insight-frontend
+              app: legal-insight-frontend
           spec:
             containers:
               - name: frontend
@@ -76,7 +76,7 @@ patches:
         template:
           metadata:
             labels:
-              app: legal-legal-insight-backend
+              app: legal-insight-backend
           spec:
             containers:
               - name: backend

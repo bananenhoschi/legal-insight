@@ -1,0 +1,86 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ./frontend
+  - ./backend
+
+namespace: legal-insight
+
+commonLabels:
+  app: legal-insight
+
+patches:
+  - target:
+      kind: Service
+      name: frontend
+    patch: |-
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: frontend
+      spec:
+        ports:
+        - name: http
+          port: 3000
+          targetPort: 3000
+        selector:
+          app: legal-insight-frontend
+
+  - target:
+      kind: Service
+      name: backend
+    patch: |-
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: backend
+      spec:
+        ports:
+        - name: http
+          port: 5000
+          targetPort: 5000
+        selector:
+          app: legal-insight-backend
+
+  - target:
+      kind: Deployment
+      name: frontend
+    patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: frontend
+      spec:
+        template:
+          metadata:
+            labels:
+              app: legal-legal-insight-frontend
+          spec:
+            containers:
+              - name: frontend
+                image: europe-west6-docker.pkg.dev/legal-insight/legal-insight-frontend
+                ports:
+                  - name: http
+                    containerPort: 3000
+
+  - target:
+      kind: Deployment
+      name: backend
+    patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: backend
+      spec:
+        template:
+          metadata:
+            labels:
+              app: legal-legal-insight-backend
+          spec:
+            containers:
+              - name: backend
+                image: europe-west6-docker.pkg.dev/legal-insight/legal-insight-backend
+                ports:
+                  - name: http
+                    containerPort: 5000

@@ -1,0 +1,11 @@
+@import "~bootstrap/scss/bootstrap";
+
+@import "primereact/resources/themes/lara-light-indigo/theme.css";
+@import "primereact/resources/primereact.min.css";
+@import "primeflex/primeflex.css";
+
+body {
+  font-family: var(--font-family);
+  color: #212529
+}
+

@@ -1,0 +1,41 @@
+.tag {
+  line-height: 2.3;
+  font-weight: 600;
+  font-size: 0.8rem;
+  border-radius: 0.3em;
+  display: inline-block;
+  padding: 0 5px;
+  margin: 0 3px
+}
+
+.green {
+  background-color: #d8e6b3;
+}
+
+.red {
+  background-color: #ffcad6;
+}
+
+.taggedText {
+  border:1px solid #dee2e6;
+  border-radius: 7px;
+  line-height: 2.3;
+  text-align: justify;
+  padding: 12px;
+  min-height: 70vh;
+}
+
+.circleNumber {
+  border-radius: 1.5em;
+  -moz-border-radius: 1.5em;
+  -webkit-border-radius: 1.5em;
+  color: #343a40;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 2.5em;
+  font-size: 12px;
+  margin: 5px 5px 0 0;
+  text-align: center;
+  width: 2.5em;
+  background-color: #d4dadd;
+}

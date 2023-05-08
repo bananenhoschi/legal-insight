@@ -84,7 +84,7 @@ jobs:
         curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
         chmod u+x ./kustomize
     # Deploy the Docker image to the GKE cluster
-    - name: Deploy Frontend
+    - name: Deploy
       run: |-
         # replacing the image name in the k8s template
         ./kustomize edit set image europe-west6-docker.pkg.dev/legal-insight/legal-insight-frontend:TAG=$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$FRONTEND_REPOSITORY/legal-insight-frontend:$GITHUB_SHA

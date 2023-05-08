@@ -62,22 +62,22 @@ jobs:
     - name: Build Frontend
       run: |-
         docker build \
-          --tag "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$FRONTEND_REPOSITORY/legal-insight-frontend:GITHUB_SHA" \
+          --tag "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$FRONTEND_REPOSITORY/legal-insight-frontend:$GITHUB_SHA" \
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
           --build-arg GITHUB_REF="$GITHUB_REF" \
           ./frontend
     - name: Build Backend
       run: |-
         docker build \
-          --tag "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$BACKEND_REPOSITORY/legal-insight-backend:GITHUB_SHA" \
+          --tag "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$BACKEND_REPOSITORY/legal-insight-backend:$GITHUB_SHA" \
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
           --build-arg GITHUB_REF="$GITHUB_REF" \
           ./backend
     # Push the Docker image to Google Artifact Registry
     - name: Publish
       run: |-
-        docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$FRONTEND_REPOSITORY/legal-insight-frontend:GITHUB_SHA"
-        docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$FRONTEND_REPOSITORY/legal-insight-backend:GITHUB_SHA"
+        docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$FRONTEND_REPOSITORY/legal-insight-frontend:$GITHUB_SHA"
+        docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$FRONTEND_REPOSITORY/legal-insight-backend:$GITHUB_SHA"
     # Set up kustomize
     - name: Set up Kustomize
       run: |-

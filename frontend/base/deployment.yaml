@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: legal-insight-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: legal-insight-frontend
+  template:
+    metadata:
+      labels:
+        app: legal-insight-frontend
+    spec:
+      containers:
+        - name: legal-insight-frontend
+          image: europe-west6-docker.pkg.dev/legal-insight-frontend/legal-insight-frontend:latest
+          ports:
+            - name: http
+              containerPort: 5000

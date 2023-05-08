@@ -77,7 +77,7 @@ jobs:
     - name: Publish
       run: |-
         docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$FRONTEND_REPOSITORY/legal-insight-frontend:$GITHUB_SHA"
-        docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$FRONTEND_REPOSITORY/legal-insight-backend:$GITHUB_SHA"
+        docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$BACKEND_REPOSITORY/legal-insight-backend:$GITHUB_SHA"
     # Set up kustomize
     - name: Set up Kustomize
       run: |-

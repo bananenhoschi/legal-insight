@@ -1,0 +1,10 @@
+# Core packages
+pandas
+numpy
+matplotlib
+scikit-learn
+spacy
+openpyxl
+loguru
+flask
+gunicorn==20.1.0

@@ -13,5 +13,5 @@ axiosInstance.interceptors.response.use(function (response) {
 })
 
 export async function analyzeText(text: string): Promise<Token[]> {
-    return axiosInstance.post(`http://localhost:5001/api/analyse`, {'text': text})
+    return axiosInstance.post(`http://localhost:5000/api/analyse`, {'text': text})
 }
